@@ -1,0 +1,54 @@
+/* Phones (up to 760px wide): a bottom tab bar and a mini player replace the sidebar and the wide player bar. */
+.tabs,.mini,.moresheet-backdrop{display:none}
+
+@media (max-width:760px){
+  :root{--tabs-h:58px;--mini-h:62px}
+  .side,.bar{display:none}
+
+  .layout{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr);height:100vh;padding-bottom:var(--tabs-h)}
+  .layout.has-mini{padding-bottom:calc(var(--tabs-h) + var(--mini-h) + 12px)}
+
+  /* tighter pages and lists */
+  .main{padding:14px 12px}
+  .main h1{font-size:24px;margin:0 0 12px}
+  .toolbar{flex-wrap:wrap}
+  .toolbar .searchbox,.toolbar>input{flex:1 1 100%}
+  .row{gap:10px;padding:8px 2px}
+  .row .dim{display:none}
+  .actions{gap:4px}
+  .imp .item{grid-template-columns:1fr 58px 104px}
+
+  /* bottom tab bar */
+  .tabs{display:flex;position:fixed;left:0;right:0;bottom:0;height:var(--tabs-h);background:var(--panel);border-top:1px solid var(--border);z-index:40}
+  .tabs a,.tabs button{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--muted);font-size:11px;background:transparent;border-radius:0;padding:6px 2px;text-decoration:none}
+  .tabs a.active,.tabs button.on{color:var(--accent)}
+  .tabs button:hover:not(:disabled){background:transparent}
+
+  /* mini player */
+  .mini{display:flex;align-items:center;gap:10px;position:fixed;left:8px;right:8px;bottom:calc(var(--tabs-h) + 6px);height:var(--mini-h);padding:8px 6px 8px 10px;border-radius:14px;background:var(--panel);border:1px solid var(--border);box-shadow:0 6px 20px rgba(0,0,0,.35);overflow:hidden;cursor:pointer;z-index:40}
+  .mini .cover{width:42px;height:42px}
+  .mini .meta{flex:1;min-width:0}
+  .mini button{background:transparent;color:var(--text);padding:8px;display:inline-flex}
+  .mini button:hover:not(:disabled){background:var(--hover)}
+  .mini-bar{position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--border)}
+  .mini-bar i{display:block;height:100%;background:var(--accent)}
+
+  /* "More" sheet (opens above the tab bar) */
+  .moresheet-backdrop{display:flex;align-items:flex-end;position:fixed;left:0;right:0;top:0;bottom:var(--tabs-h);z-index:45;background:rgba(0,0,0,.5)}
+  .moresheet{width:100%;max-height:80vh;overflow-y:auto;background:var(--panel);border-radius:20px 20px 0 0;padding:14px 12px 12px;border-top:1px solid var(--border)}
+  .msuser{padding:4px 10px 10px;color:var(--subtle)}
+  .moresheet .msitem,.moresheet .themepicker>button{display:flex;align-items:center;gap:16px;width:100%;text-align:left;background:transparent;color:var(--text);padding:13px 10px;border-radius:12px;font-size:15px;text-decoration:none}
+  .moresheet .msval{margin-left:auto;color:var(--subtle);font-size:13px}
+  .moresheet .msitem:hover,.moresheet .themepicker>button:hover:not(:disabled){background:var(--hover)}
+
+  /* things that must sit above the new bars */
+  .queue{width:100%;bottom:calc(var(--tabs-h) + var(--mini-h) + 12px);z-index:35}
+  .toast{bottom:calc(var(--tabs-h) + var(--mini-h) + 24px)}
+  .np{z-index:50}
+  .overlay,.rowmenu{z-index:60}
+}
+
+/* phone browsers: 100vh includes the address bar, 100dvh does not */
+@supports (height:100dvh){
+  @media (max-width:760px){.layout{height:100dvh}}
+}

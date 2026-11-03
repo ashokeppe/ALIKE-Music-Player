@@ -1,0 +1,171 @@
+/* Theme colors. The theme id is set on <html data-theme="..."> (see themes.js). Dark is the default. */
+:root,
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#121212; --side:#000000; --panel:#181818; --card:#161616; --hover:#1c1c1c;
+  --active-bg:#1e2a22; --select-bg:#1b2733;
+  --btn:#2a2a2a; --btn-hover:#3a3a3a; --input-bg:#1e1e1e; --input-border:#333333; --border:#2a2a2a;
+  --text:#eeeeee; --dim:#888888; --subtle:#999999; --muted:#aaaaaa;
+  --accent:#4ade80; --ok:#4ade80; --link:#7dd3fc; --danger:#f87171;
+  --danger-bg:#7f1d1d; --danger-bg-hover:#991b1b; --like:#f472b6; --overlay:rgba(0,0,0,.6);
+  --side-active-bg:#222222; --side-active-text:#ffffff;
+  --big-bg:#ffffff; --big-text:#000000; --big-hover:#dddddd;
+}
+:root[data-theme="black"]{
+  color-scheme:dark;
+  --bg:#000000; --side:#000000; --panel:#0a0a0a; --card:#050505; --hover:#111111;
+  --active-bg:#0f1f15; --select-bg:#0b1722;
+  --btn:#1c1c1c; --btn-hover:#2c2c2c; --input-bg:#0d0d0d; --input-border:#2a2a2a; --border:#1f1f1f;
+  --text:#f2f2f2; --dim:#777777; --subtle:#8a8a8a; --muted:#a0a0a0;
+  --side-active-bg:#161616;
+}
+:root[data-theme="light"]{
+  color-scheme:light;
+  --bg:#f4f5f7; --side:#ffffff; --panel:#ffffff; --card:#ffffff; --hover:#eceef2;
+  --active-bg:#dcfce7; --select-bg:#dbeafe;
+  --btn:#e5e7eb; --btn-hover:#d1d5db; --input-bg:#ffffff; --input-border:#d1d5db; --border:#e2e5ea;
+  --text:#1f2328; --dim:#8b929a; --subtle:#6b7280; --muted:#4b5563;
+  --accent:#16a34a; --ok:#15803d; --link:#0369a1; --danger:#dc2626;
+  --danger-bg:#dc2626; --danger-bg-hover:#b91c1c; --like:#db2777; --overlay:rgba(0,0,0,.4);
+  --side-active-bg:#e8eaee; --side-active-text:#111111;
+  --big-bg:#111827; --big-text:#ffffff; --big-hover:#374151;
+}
+:root[data-theme="midnight"]{
+  color-scheme:dark;
+  --bg:#0b1220; --side:#070c16; --panel:#101a2e; --card:#0e1728; --hover:#14203a;
+  --active-bg:#12304a; --select-bg:#17294a;
+  --btn:#1b2a47; --btn-hover:#263a5e; --input-bg:#0f1a2f; --input-border:#25365a; --border:#1d2b49;
+  --text:#e6edf7; --dim:#7d8aa5; --subtle:#93a0ba; --muted:#a9b6cf;
+  --accent:#38bdf8; --link:#7dd3fc; --overlay:rgba(0,0,10,.65);
+  --side-active-bg:#162544; --big-text:#0b1220; --big-hover:#dbeafe;
+}
+:root[data-theme="purple"]{
+  color-scheme:dark;
+  --bg:#150f1f; --side:#0e0916; --panel:#1d1430; --card:#1a122b; --hover:#241a3a;
+  --active-bg:#3b1f5e; --select-bg:#2a2150;
+  --btn:#2d2145; --btn-hover:#3d2e5c; --input-bg:#1a1229; --input-border:#3a2c57; --border:#2b2043;
+  --text:#f0e9fb; --dim:#9a8bb5; --subtle:#ae9fca; --muted:#c0b3d8;
+  --accent:#c084fc; --link:#d8b4fe; --overlay:rgba(5,0,15,.65);
+  --side-active-bg:#2a1d42; --big-text:#1d1430; --big-hover:#eadcff;
+}
+:root[data-theme="sunset"]{
+  color-scheme:dark;
+  --bg:#1a100d; --side:#120a08; --panel:#24160f; --card:#20130d; --hover:#2d1b13;
+  --active-bg:#4a2411; --select-bg:#3a2a18;
+  --btn:#35211a; --btn-hover:#4a3027; --input-bg:#1f130e; --input-border:#4a3126; --border:#33211a;
+  --text:#fbeee4; --dim:#a58b7c; --subtle:#b99d8c; --muted:#cbb09f;
+  --accent:#fb923c; --link:#fdba74; --overlay:rgba(15,5,0,.65);
+  --side-active-bg:#331e15; --big-text:#24160f; --big-hover:#ffe2cc;
+}
+
+/* Sliders and progress bars follow the theme's accent color */
+input[type=range],progress{accent-color:var(--accent)}
+
+/* Custom picture theme: the chosen picture is the page background, panels are see-through glass */
+:root[data-theme="custom"]{
+  color-scheme:dark;
+  --bg:#0d0d10;
+  --side:rgba(0,0,0,.5); --panel:rgba(14,14,18,.7); --card:rgba(14,14,18,.55); --hover:rgba(255,255,255,.1);
+  --active-bg:rgba(255,255,255,.16); --select-bg:rgba(255,255,255,.14);
+  --btn:rgba(255,255,255,.14); --btn-hover:rgba(255,255,255,.24);
+  --input-bg:rgba(0,0,0,.4); --input-border:rgba(255,255,255,.2); --border:rgba(255,255,255,.14);
+  --text:#f7f7f7; --dim:#c4c4c4; --subtle:#d0d0d0; --muted:#dadada;
+  --accent:var(--custom-accent,#4ade80);
+  --side-active-bg:rgba(255,255,255,.18); --overlay:rgba(0,0,0,.6);
+}
+:root[data-theme="custom"] body{
+  background-color:var(--bg);
+  background-image:linear-gradient(rgba(0,0,0,.42),rgba(0,0,0,.42)),var(--custom-bg,none);
+  background-size:cover; background-position:center; background-attachment:fixed;
+}
+:root[data-theme="custom"] .main{text-shadow:0 1px 3px rgba(0,0,0,.55)}
+:root[data-theme="custom"] :is(.side,.bar,.queue,.modal,.auth,.selbar,.thememenu,.rowmenu,.imp .list){-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+
+/* Animated themes: a moving scene behind the app (backdrop.css) and see-through "glass" panels */
+:root:is([data-theme="aurora"],[data-theme="synthwave"],[data-theme="starry"],[data-theme="rain"],[data-theme="ocean"],[data-theme="weather"],[data-theme="sakura"],[data-theme="fireflies"],[data-theme="lava"],[data-theme="warp"],[data-theme="matrix"],[data-theme="bars"]){
+  color-scheme:dark;
+  --bg:#05070f;
+  --side:rgba(0,0,0,.40); --panel:rgba(8,10,22,.66); --card:rgba(8,10,22,.5); --hover:rgba(255,255,255,.10);
+  --active-bg:rgba(255,255,255,.14); --select-bg:rgba(255,255,255,.12);
+  --btn:rgba(255,255,255,.12); --btn-hover:rgba(255,255,255,.22);
+  --input-bg:rgba(0,0,0,.38); --input-border:rgba(255,255,255,.18); --border:rgba(255,255,255,.12);
+  --text:#f6f7fb; --dim:#b7bdd0; --subtle:#c6ccdc; --muted:#d5dae8;
+  --side-active-bg:rgba(255,255,255,.16); --overlay:rgba(0,0,0,.6);
+}
+:root[data-theme="aurora"]{--accent:#34f5b0;--link:#8be9fd}
+:root[data-theme="synthwave"]{--accent:#ff4fb3;--link:#ffb3e0}
+:root[data-theme="starry"]{--accent:#a5b4ff;--link:#c7d2ff}
+:root[data-theme="rain"]{--accent:#7fb2ff;--link:#a9cbff}
+:root[data-theme="ocean"]{--accent:#4fd1e8;--link:#8be9fd}
+:root[data-theme="weather"]{--accent:#7cc4ff;--link:#bfe3fb}
+:root[data-theme="sakura"]{--accent:#ff9fc4;--link:#ffc2d6}
+:root[data-theme="fireflies"]{--accent:#c8ff6b;--link:#e0ff9a}
+:root[data-theme="lava"]{--accent:#ff8a3d;--link:#ffc08a}
+:root[data-theme="warp"]{--accent:#9ec1ff;--link:#c7dbff}
+:root[data-theme="matrix"]{--accent:#2cff88;--link:#8dffbf}
+:root[data-theme="bars"]{--accent:#ff4fd8;--link:#ffb0f0}
+:root:is([data-theme="aurora"],[data-theme="synthwave"],[data-theme="starry"],[data-theme="rain"],[data-theme="ocean"],[data-theme="weather"],[data-theme="sakura"],[data-theme="fireflies"],[data-theme="lava"],[data-theme="warp"],[data-theme="matrix"],[data-theme="bars"]) .main{text-shadow:0 1px 3px rgba(0,0,0,.6)}
+:root:is([data-theme="aurora"],[data-theme="synthwave"],[data-theme="starry"],[data-theme="rain"],[data-theme="ocean"],[data-theme="weather"],[data-theme="sakura"],[data-theme="fireflies"],[data-theme="lava"],[data-theme="warp"],[data-theme="matrix"],[data-theme="bars"]) :is(.side,.bar,.queue,.modal,.auth,.selbar,.thememenu,.rowmenu,.imp .list){-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+
+/* Theme picker: a menu item in the sidebar, right below "Upload"; its choices open to the right */
+.themepicker{position:relative}
+.side .themepicker>button{width:100%;text-align:left;background:transparent;color:var(--muted);padding:8px 10px;border-radius:6px}
+.side .themepicker>button:hover:not(:disabled){background:var(--hover);color:var(--text)}
+.side .themepicker>button.open{background:var(--side-active-bg);color:var(--side-active-text)}
+.thememenu{position:absolute;left:calc(100% + 8px);top:0;width:250px;max-height:calc(100vh - 120px);overflow-y:auto;background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:6px;display:flex;flex-direction:column;gap:2px;z-index:30;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.thememenu .themeopt{display:flex;align-items:center;gap:10px;background:transparent;text-align:left;padding:7px 8px;width:100%;color:var(--text)}
+.thememenu .themeopt:hover:not(:disabled){background:var(--hover)}
+.thememenu .themeopt.on{color:var(--accent)}
+.swatch{width:22px;height:22px;border-radius:50%;border:1px solid var(--border);display:inline-flex;align-items:center;justify-content:center;flex:none;background-size:cover;background-position:center;font-size:12px}
+.swatch i{width:10px;height:10px;border-radius:50%;display:block}
+.thememenu .tick{margin-left:auto}
+.themesep{height:1px;background:var(--border);margin:4px 2px}
+.themecustom{display:flex;gap:6px;padding:2px 8px 4px 40px}
+.themecustom button{padding:4px 8px;font-size:12px;white-space:nowrap}
+.themehint{margin:2px 8px 6px;font-size:12px;color:var(--subtle);line-height:1.4}
+@media (max-width:760px){.thememenu{left:0;top:calc(100% + 6px)}}
+.themehead{margin:6px 8px 2px;font-size:11px;letter-spacing:.8px;text-transform:uppercase;color:var(--subtle)}
+.themetoggle{display:flex;align-items:center;gap:8px;padding:6px 8px;font-size:13px;color:var(--muted);cursor:pointer}
+.themetoggle input{width:16px;height:16px}
+
+/* Theme menu: a tall panel beside the sidebar. The list scrolls; the bottom part (animations switch and
+   "Custom picture") is always visible, so it never gets lost below the fold. */
+.thememenu{position:fixed;left:200px;top:12px;width:300px;max-height:calc(100vh - 110px);padding:0;gap:0;overflow:hidden}
+.themelist{flex:1;min-height:0;overflow-y:auto;padding:6px;display:flex;flex-direction:column;gap:2px}
+.themefoot{flex:none;border-top:1px solid var(--border);padding:6px;display:flex;flex-direction:column;gap:2px}
+@media (max-width:760px){.thememenu{left:8px;right:8px;top:56px;width:auto}}
+
+/* Live weather: place picker inside the menu, and a small badge under the Theme item */
+.wxbox{margin:2px 4px 6px 36px;display:flex;flex-direction:column;gap:6px;font-size:13px}
+.wxnow{margin:0;color:var(--muted)}
+.wxbox button{padding:5px 8px;font-size:12px}
+.wxbox form{display:flex;gap:6px}
+.wxbox form input{flex:1;min-width:0;padding:5px 8px;font-size:12px}
+.wxbox .wxresult{text-align:left;white-space:normal}
+.wxbadge{margin:2px 10px 6px;font-size:12px;line-height:1.4;color:var(--subtle)}
+
+/* Built-in wallpapers */
+.wallgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:4px 6px 8px}
+.wall{aspect-ratio:16/10;padding:0;border-radius:8px;border:2px solid transparent;background-size:cover;background-position:center}
+.wall:hover:not(:disabled){filter:brightness(1.15)}
+.wall.on{border-color:var(--accent)}
+
+/* "About" item in the sidebar, styled like the Theme item */
+.side .sidebtn{width:100%;text-align:left;background:transparent;color:var(--muted);padding:8px 10px;border-radius:6px}
+.side .sidebtn:hover:not(:disabled){background:var(--hover);color:var(--text)}
+
+/* Theme menu: every choice is a small picture with a short label (same look for colors, animated, live and wallpapers) */
+.tilegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 8px;padding:2px 6px 10px}
+.thememenu .tile{display:flex;flex-direction:column;gap:5px;min-width:0;padding:0;background:transparent;text-align:center;color:var(--muted);font-size:11px;border-radius:10px}
+.thememenu .tile:hover:not(:disabled){background:transparent;color:var(--text)}
+.thememenu .tile:hover:not(:disabled) .thumb{filter:brightness(1.15)}
+.thememenu .tile.on{color:var(--accent)}
+.tile .thumb{position:relative;display:block;aspect-ratio:16/11;border-radius:9px;border:2px solid transparent;background-size:cover;background-position:center;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+.tile.on .thumb{border-color:var(--accent)}
+.tile .thumb>i{position:absolute;right:5px;bottom:5px;width:9px;height:9px;border-radius:50%;box-shadow:0 0 0 2px rgba(0,0,0,.3)}
+.tile .tick{position:absolute;left:4px;top:4px;z-index:2;width:16px;height:16px;border-radius:50%;background:var(--accent);color:#000;font-size:10px;line-height:16px;font-weight:700}
+.tile .lbl{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 2px}
+/* color themes get a tiny app preview: sidebar + three list rows */
+.tile .thumb.ui::before{content:"";position:absolute;left:0;top:0;bottom:0;width:24%;background:rgba(0,0,0,.3)}
+.tile .thumb.ui::after{content:"";position:absolute;left:33%;right:12%;top:24%;height:7%;border-radius:3px;background:var(--bar);box-shadow:0 8px 0 rgba(128,128,128,.55),0 16px 0 rgba(128,128,128,.4)}
+.wxbox.wide{margin:0 8px 10px}
