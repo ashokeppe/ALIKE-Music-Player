@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ALIKE</title>
+    <script>
+      // Apply the saved theme before the page is drawn (avoids a flash of the wrong colors)
+      try {
+        var t = localStorage.getItem("theme") || "dark";
+        var img = localStorage.getItem("theme-image");
+        var root = document.documentElement;
+        if (t === "custom" && !img) t = "dark";
+        if (t === "auto") t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        if (img) {
+          root.style.setProperty("--custom-bg", 'url("' + img + '")');
+          root.style.setProperty("--custom-accent", localStorage.getItem("theme-accent") || "#4ade80");
+        }
+        root.setAttribute("data-theme", t);
+        if (localStorage.getItem("theme-motion") === "off") root.setAttribute("data-motion", "off");
+        if (t === "weather") {
+          var w = JSON.parse(localStorage.getItem("weather-last") || "null");
+          if (w) {
+            root.setAttribute("data-weather", w.cond);
+            root.setAttribute("data-daylight", w.isDay ? "day" : "night");
+          }
+        }
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

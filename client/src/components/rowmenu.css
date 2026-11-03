@@ -1,0 +1,40 @@
+/* Three-dot button and its menu */
+.dots{padding:6px 8px;display:inline-flex;align-items:center}
+.rowmenu{position:fixed;z-index:60;min-width:200px;max-width:260px;max-height:70vh;overflow-y:auto;background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:6px;box-shadow:0 12px 32px rgba(0,0,0,.4);display:flex;flex-direction:column;gap:1px}
+.rowmenu button{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:transparent;color:var(--text);padding:8px 10px;border-radius:8px}
+.rowmenu button:hover:not(:disabled){background:var(--hover)}
+.rowmenu .mi-danger{color:var(--danger)}
+.rowmenu .chev{margin-left:auto;color:var(--subtle)}
+.rowmenu hr{border:0;border-top:1px solid var(--border);margin:4px 2px;width:auto}
+.rowmenu .mh{color:var(--subtle);font-size:12px}
+.rowmenu .mnote{margin:6px 10px;font-size:12px;color:var(--subtle);max-width:220px}
+
+/* Message at the bottom of the screen */
+.toast{position:fixed;left:50%;bottom:110px;transform:translate(-50%,10px);background:var(--panel);color:var(--text);border:1px solid var(--border);padding:10px 18px;border-radius:999px;opacity:0;transition:opacity .25s,transform .25s;z-index:100;box-shadow:0 8px 24px rgba(0,0,0,.35);pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* Song info window */
+.infohead{display:flex;gap:12px;align-items:center}
+.info{display:flex;flex-direction:column;gap:6px;margin:0}
+.inforow{display:grid;grid-template-columns:110px 1fr;gap:12px}
+.info dt{color:var(--subtle)}
+.info dd{margin:0;word-break:break-word}
+
+/* Ringtone window */
+.modal.rt{width:min(460px,92vw)}
+.rt .rtnote{margin:0;color:var(--subtle);line-height:1.5;font-size:13px}
+.rt .rtlens{display:flex;gap:8px}
+.rt .rtlens button.on{background:var(--accent);color:#000}
+.rt .primary{background:var(--accent);color:#000}
+.rt .primary:hover:not(:disabled){background:var(--accent);filter:brightness(1.1)}
+.rt .rthelp{color:var(--muted);font-size:13px}
+.rt .rthelp summary{cursor:pointer}
+.rt .rthelp p{margin:8px 0 0;line-height:1.5}
+
+.rowmenu button svg{flex:none}
+.rowmenu .mh{gap:8px}
+
+/* Caller tune */
+.rt .rtcurrent{margin:0;padding:8px 10px;border-radius:10px;background:var(--btn);font-size:13px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.rt .rtlink{margin-left:auto;background:transparent;color:var(--link);text-decoration:underline;padding:0 4px}
+.rt .btns{flex-wrap:wrap}

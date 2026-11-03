@@ -1,0 +1,209 @@
+/* Animated theme scenes. They sit behind the app (z-index -1) and only the active theme's scene is shown. */
+.fx{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;display:none}
+.fx>div{position:absolute;inset:0;display:none}
+:root:is([data-theme="aurora"],[data-theme="synthwave"],[data-theme="starry"],[data-theme="rain"],[data-theme="ocean"],[data-theme="weather"],[data-theme="sakura"],[data-theme="fireflies"],[data-theme="lava"],[data-theme="warp"],[data-theme="matrix"],[data-theme="bars"]) .fx{display:block}
+:root[data-theme="aurora"] .fx-aurora,
+:root[data-theme="synthwave"] .fx-synthwave,
+:root[data-theme="starry"] .fx-stars,
+:root[data-theme="rain"] .fx-rain,
+:root[data-theme="ocean"] .fx-ocean,
+:root[data-theme="weather"] .fx-weather{display:block}
+:root[data-theme="sakura"] .fx-sakura,
+:root[data-theme="fireflies"] .fx-fireflies,
+:root[data-theme="lava"] .fx-lava,
+:root[data-theme="warp"] .fx-warp,
+:root[data-theme="matrix"] .fx-matrix,
+:root[data-theme="bars"] .fx-bars{display:block}
+
+/* Pause (from the theme menu) or reduce motion (computer setting) */
+:root[data-motion="off"] .fx *,:root[data-motion="off"] .fx{animation-play-state:paused !important}
+@media (prefers-reduced-motion:reduce){.fx,.fx *{animation:none !important}}
+
+/* ---------- Aurora ---------- */
+.fx-aurora{background:radial-gradient(120% 90% at 50% 115%,#0c2347 0%,#050918 62%,#03050f 100%)}
+.fx-aurora i{position:absolute;border-radius:50%;opacity:.55;mix-blend-mode:screen;will-change:transform}
+.fx-aurora .a1{width:75vmax;height:75vmax;left:-25vmax;top:-35vmax;background:radial-gradient(circle,#19e6a0 0%,rgba(25,230,160,0) 62%);animation:au1 26s ease-in-out infinite alternate}
+.fx-aurora .a2{width:65vmax;height:65vmax;right:-20vmax;top:-25vmax;background:radial-gradient(circle,#8a4dff 0%,rgba(138,77,255,0) 62%);animation:au2 32s ease-in-out infinite alternate}
+.fx-aurora .a3{width:60vmax;height:60vmax;left:15vmax;bottom:-35vmax;background:radial-gradient(circle,#14c6e0 0%,rgba(20,198,224,0) 62%);animation:au3 28s ease-in-out infinite alternate}
+.fx-aurora .a4{width:45vmax;height:45vmax;right:5vmax;bottom:-20vmax;background:radial-gradient(circle,#ff5fa8 0%,rgba(255,95,168,0) 62%);opacity:.35;animation:au4 36s ease-in-out infinite alternate}
+@keyframes au1{from{transform:translate(0,0) scale(1)}to{transform:translate(30vmax,20vmax) scale(1.25)}}
+@keyframes au2{from{transform:translate(0,0) scale(1.1)}to{transform:translate(-30vmax,22vmax) scale(.9)}}
+@keyframes au3{from{transform:translate(0,0) scale(1)}to{transform:translate(26vmax,-18vmax) scale(1.2)}}
+@keyframes au4{from{transform:translate(0,0) scale(.9)}to{transform:translate(-24vmax,-14vmax) scale(1.3)}}
+
+/* ---------- Synthwave ---------- */
+.fx-synthwave{background:linear-gradient(180deg,#14072e 0%,#3b1a72 38%,#c2358f 60%,#ff7a59 69%,#12052a 69.2%,#0c0320 100%)}
+.fx-synthwave .sun{position:absolute;left:50%;bottom:31%;width:38vmin;height:38vmin;transform:translateX(-50%);border-radius:50%;background:linear-gradient(#ffe45e 10%,#ff3d9a 85%);
+  -webkit-mask-image:linear-gradient(#000 0 52%,transparent 52% 56%,#000 56% 64%,transparent 64% 69%,#000 69% 76%,transparent 76% 82%,#000 82% 100%);
+  mask-image:linear-gradient(#000 0 52%,transparent 52% 56%,#000 56% 64%,transparent 64% 69%,#000 69% 76%,transparent 76% 82%,#000 82% 100%);
+  filter:drop-shadow(0 0 30px rgba(255,61,154,.55))}
+.fx-synthwave .grid{position:absolute;left:0;right:0;bottom:0;height:31%;overflow:hidden;perspective:260px;perspective-origin:50% 0}
+.fx-synthwave .grid::after{content:"";position:absolute;inset:0;background:linear-gradient(#12052a,rgba(18,5,42,0) 45%)}
+.fx-synthwave .plane{position:absolute;left:-60%;right:-60%;top:0;height:260%;transform-origin:50% 0;transform:rotateX(72deg)}
+.fx-synthwave .pattern{position:absolute;left:0;right:0;top:-60px;bottom:0;will-change:transform;
+  background-image:linear-gradient(rgba(255,79,179,.9) 2px,transparent 2px),linear-gradient(90deg,rgba(255,79,179,.9) 2px,transparent 2px);
+  background-size:60px 60px;animation:gridmove 1.1s linear infinite}
+@keyframes gridmove{from{transform:translateY(0)}to{transform:translateY(60px)}}
+
+/* ---------- Starry night ---------- */
+.fx-stars{background:radial-gradient(ellipse at 50% 125%,#1d2f6e 0%,#0a1031 48%,#03040d 100%)}
+.fx-stars .star{position:absolute;left:0;top:0;border-radius:50%;background:transparent;animation:twinkle 4s ease-in-out infinite alternate}
+.fx-stars .l1{width:1px;height:1px;animation-duration:3s}
+.fx-stars .l2{width:2px;height:2px;animation-duration:5s;animation-delay:-1.5s}
+.fx-stars .l3{width:3px;height:3px;animation-duration:7s;animation-delay:-3s}
+@keyframes twinkle{from{opacity:.2}to{opacity:1}}
+.fx-stars .shoot{position:absolute;left:var(--l);top:var(--t);width:140px;height:2px;border-radius:2px;background:linear-gradient(90deg,rgba(255,255,255,.95),rgba(255,255,255,0));opacity:0;animation:shoot 11s linear var(--d) infinite}
+@keyframes shoot{0%{opacity:0;transform:translate(0,0) rotate(-35deg)}1.5%{opacity:1}7%{opacity:0;transform:translate(-340px,238px) rotate(-35deg)}100%{opacity:0;transform:translate(-340px,238px) rotate(-35deg)}}
+
+/* ---------- Lo-fi rain ---------- */
+.fx-rain{background:linear-gradient(180deg,#0a0f18 0%,#16212f 60%,#233246 100%)}
+.fx-rain::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 60% at 50% 110%,rgba(120,150,190,.28),rgba(120,150,190,0) 70%)}
+.fx-rain i{position:absolute;top:-14vh;left:var(--x);width:1px;height:var(--h);opacity:var(--o);background:linear-gradient(rgba(190,210,240,0),rgba(190,210,240,.9));animation:fall var(--d) linear var(--w) infinite;will-change:transform}
+@keyframes fall{from{transform:translate3d(0,0,0) rotate(8deg)}to{transform:translate3d(-16vh,130vh,0) rotate(8deg)}}
+
+/* ---------- Ocean waves ---------- */
+.fx-ocean{background:linear-gradient(180deg,#06162b 0%,#0b3558 55%,#1b6a8a 100%)}
+.fx-ocean::before{content:"";position:absolute;right:3%;top:2.5%;opacity:.7;width:8vmin;height:8vmin;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fffbe8,#ffe9a8 60%,rgba(255,233,168,0) 72%);box-shadow:0 0 60px 20px rgba(255,240,190,.22)}
+.fx-ocean .wave{position:absolute;left:0;width:200%;background-repeat:repeat-x;background-size:50% 100%;will-change:transform}
+.fx-ocean .w1{bottom:0;height:34%;background-image:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201200%20120'%20preserveAspectRatio='none'%3E%3Cpath%20d='M0%2C60%20C150%2C10%20350%2C110%20600%2C60%20C850%2C10%201050%2C110%201200%2C60%20L1200%2C120%20L0%2C120%20Z'%20fill='rgba%2814%2C78%2C120%2C.75%29'/%3E%3C/svg%3E");animation:drift 22s linear infinite}
+.fx-ocean .w2{bottom:0;height:26%;background-image:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201200%20120'%20preserveAspectRatio='none'%3E%3Cpath%20d='M0%2C60%20C150%2C10%20350%2C110%20600%2C60%20C850%2C10%201050%2C110%201200%2C60%20L1200%2C120%20L0%2C120%20Z'%20fill='rgba%287%2C48%2C86%2C.82%29'/%3E%3C/svg%3E");animation:drift 15s linear infinite reverse}
+.fx-ocean .w3{bottom:0;height:18%;background-image:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201200%20120'%20preserveAspectRatio='none'%3E%3Cpath%20d='M0%2C60%20C150%2C10%20350%2C110%20600%2C60%20C850%2C10%201050%2C110%201200%2C60%20L1200%2C120%20L0%2C120%20Z'%20fill='rgba%283%2C26%2C52%2C.92%29'/%3E%3C/svg%3E");animation:drift 10s linear infinite}
+@keyframes drift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---------- Live weather ---------- */
+.fx-weather>div{position:absolute;inset:0}
+.fx-weather :is(.sun,.moon,.wstars,.clouds,.drops,.snow,.fogs,.flash){display:none}
+
+/* sky colors: day first, then night overrides */
+:root[data-theme="weather"]{--sky1:#2b7fd8;--sky2:#6bb7f0;--sky3:#bfe3fb;--cloud:rgba(255,255,255,.92)}
+:root[data-weather="partly"]{--sky1:#3a7fc4;--sky2:#7db4de;--sky3:#cfe2ef;--cloud:rgba(255,255,255,.8)}
+:root[data-weather="cloudy"]{--sky1:#56677a;--sky2:#8794a3;--sky3:#b3bcc6;--cloud:rgba(98,110,124,.9)}
+:root[data-weather="fog"]{--sky1:#7d8a96;--sky2:#a3adb6;--sky3:#c9d0d6;--cloud:rgba(200,208,216,.7)}
+:root[data-weather="drizzle"]{--sky1:#4b5c6e;--sky2:#71808f;--sky3:#9aa6b2;--cloud:rgba(88,100,114,.9)}
+:root[data-weather="rain"]{--sky1:#3a4858;--sky2:#566677;--sky3:#7a8896;--cloud:rgba(70,82,96,.92)}
+:root[data-weather="thunder"]{--sky1:#232c3a;--sky2:#35414f;--sky3:#4c5967;--cloud:rgba(50,58,72,.95)}
+:root[data-weather="snow"]{--sky1:#8fa3b8;--sky2:#b9c7d5;--sky3:#e3eaf1;--cloud:rgba(215,222,230,.85)}
+:root[data-daylight="night"][data-weather="clear"]{--sky1:#050a1f;--sky2:#0d1b45;--sky3:#1b2f66}
+:root[data-daylight="night"][data-weather="partly"]{--sky1:#070d28;--sky2:#14224f;--sky3:#283a70}
+:root[data-daylight="night"][data-weather="cloudy"]{--sky1:#121a28;--sky2:#1f2a3b;--sky3:#33425a}
+:root[data-daylight="night"][data-weather="fog"]{--sky1:#1a212b;--sky2:#2a3440;--sky3:#3f4b5a}
+:root[data-daylight="night"][data-weather="drizzle"]{--sky1:#0f1722;--sky2:#1a2635;--sky3:#2b3b50}
+:root[data-daylight="night"][data-weather="rain"]{--sky1:#0b121c;--sky2:#162130;--sky3:#243448}
+:root[data-daylight="night"][data-weather="thunder"]{--sky1:#070b12;--sky2:#101824;--sky3:#1b2635}
+:root[data-daylight="night"][data-weather="snow"]{--sky1:#1a2536;--sky2:#2b3c52;--sky3:#46597a}
+
+.fx-weather .sky{background:linear-gradient(180deg,var(--sky1),var(--sky2) 60%,var(--sky3))}
+.fx-weather .veil{background:rgba(0,10,28,.36)}
+:root:is([data-weather="snow"],[data-weather="fog"])[data-daylight="day"] .fx-weather .veil{background:rgba(0,10,28,.46)}
+:root[data-daylight="night"] .fx-weather .veil{background:rgba(0,0,10,.12)}
+
+/* sun (clear or partly cloudy, daytime) */
+:root:is([data-weather="clear"],[data-weather="partly"])[data-daylight="day"] .fx-weather .sun{display:block;inset:auto;right:5%;top:3%;width:15vmin;height:15vmin;border-radius:50%;
+  background:radial-gradient(circle,#fffbd5 0 30%,#ffd75e 55%,rgba(255,215,94,0) 72%);box-shadow:0 0 90px 40px rgba(255,220,120,.4);animation:sunpulse 6s ease-in-out infinite alternate}
+@keyframes sunpulse{from{transform:scale(1)}to{transform:scale(1.07)}}
+
+/* moon and stars (clear or partly cloudy, night) */
+:root:is([data-weather="clear"],[data-weather="partly"])[data-daylight="night"] .fx-weather .moon{display:block;inset:auto;right:4%;top:3%;width:9vmin;height:9vmin;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,#fffbe8,#f3e3a8 65%,#d9c982);box-shadow:0 0 50px 14px rgba(255,240,190,.25)}
+:root:is([data-weather="clear"],[data-weather="partly"])[data-daylight="night"] .fx-weather .wstars{display:block}
+.fx-weather .star{position:absolute;left:0;top:0;border-radius:50%;background:transparent;animation:twinkle 4s ease-in-out infinite alternate}
+.fx-weather .l1{width:1px;height:1px;animation-duration:3s}
+.fx-weather .l2{width:2px;height:2px;animation-duration:5s;animation-delay:-1.5s}
+.fx-weather .l3{width:3px;height:3px;animation-duration:7s;animation-delay:-3s}
+
+/* clouds */
+:root:is([data-weather="partly"],[data-weather="cloudy"],[data-weather="fog"],[data-weather="drizzle"],[data-weather="rain"],[data-weather="thunder"],[data-weather="snow"]) .fx-weather .clouds{display:block}
+:root[data-weather="partly"] .fx-weather .clouds i:nth-child(n+3){display:none}
+:root[data-daylight="night"] .fx-weather .clouds{filter:brightness(.5)}
+.fx-weather .c{position:absolute;left:0;top:var(--t);width:150px;height:44px;border-radius:44px;background:var(--cloud);transform-origin:0 50%;filter:blur(1px);will-change:transform;animation:cloudmove var(--d) linear var(--w) infinite}
+.fx-weather .c::before,.fx-weather .c::after{content:"";position:absolute;background:var(--cloud);border-radius:50%}
+.fx-weather .c::before{width:70px;height:70px;left:22px;top:-34px}
+.fx-weather .c::after{width:54px;height:54px;left:76px;top:-22px}
+@keyframes cloudmove{from{transform:translateX(-30vw) scale(var(--s))}to{transform:translateX(130vw) scale(var(--s))}}
+
+/* rain and drizzle */
+:root:is([data-weather="drizzle"],[data-weather="rain"],[data-weather="thunder"]) .fx-weather .drops{display:block}
+:root[data-weather="drizzle"] .fx-weather .drops i:nth-child(n+29){display:none}
+:root[data-weather="drizzle"] .fx-weather .drops i{opacity:.35}
+.fx-weather .drops i{position:absolute;top:-14vh;left:var(--x);width:1px;height:var(--h);opacity:var(--o);background:linear-gradient(rgba(190,210,240,0),rgba(190,210,240,.9));animation:fall var(--d) linear var(--w) infinite;will-change:transform}
+:root[data-weather="thunder"] .fx-weather .drops i{animation-duration:calc(var(--d) * .8)}
+
+/* snow */
+:root[data-weather="snow"] .fx-weather .snow{display:block}
+.fx-weather .snow i{position:absolute;top:-6vh;left:var(--x);width:var(--z);height:var(--z);border-radius:50%;background:#fff;opacity:var(--o);animation:snowfall var(--d) linear var(--w) infinite;will-change:transform}
+@keyframes snowfall{0%{transform:translate3d(0,0,0)}50%{transform:translate3d(var(--dx),55vh,0)}100%{transform:translate3d(0,112vh,0)}}
+
+/* fog */
+:root[data-weather="fog"] .fx-weather .fogs{display:block}
+.fx-weather .fogs i{position:absolute;left:-20%;width:140%;height:32%;background:linear-gradient(rgba(225,231,238,0),rgba(225,231,238,.45),rgba(225,231,238,0));animation:fogdrift 38s ease-in-out infinite alternate;will-change:transform}
+.fx-weather .fogs .f1{top:8%}
+.fx-weather .fogs .f2{top:38%;animation-duration:52s;animation-direction:alternate-reverse}
+.fx-weather .fogs .f3{top:62%;animation-duration:44s}
+@keyframes fogdrift{from{transform:translateX(-8%)}to{transform:translateX(8%)}}
+
+/* thunderstorm: a soft double flash every few seconds */
+:root[data-weather="thunder"] .fx-weather .flash{display:block;background:#cfe0ff;opacity:0;animation:flash 8s linear infinite}
+@keyframes flash{0%,91%{opacity:0}92%{opacity:.35}93.5%{opacity:.04}95%{opacity:.4}100%{opacity:0}}
+:root[data-motion="off"] .fx-weather .flash{display:none !important}
+
+/* ================= Live wallpapers (second set) ================= */
+
+/* ---------- Cherry blossom ---------- */
+.fx-sakura{background:linear-gradient(180deg,#1b0b2e 0%,#4a1d5e 38%,#c25a8a 76%,#f7b2a4 100%)}
+.fx-sakura .moon{position:absolute;right:9%;top:7%;width:11vmin;height:11vmin;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff8ef,#ffe3e8 65%,#f6c3d0);box-shadow:0 0 70px 24px rgba(255,214,230,.28)}
+.fx-sakura .branch{position:absolute;inset:-3% auto auto -4%;width:62vmin;height:44vmin;background:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20420%20300'%3E%3Cpath%20d='M-10%2050%20C90%2070%20160%2095%20225%20155%20S330%20235%20430%20255'%20fill='none'%20stroke='%23221019'%20stroke-width='10'%20stroke-linecap='round'/%3E%3Cpath%20d='M120%2090%20C150%2065%20195%2052%20240%2058%20M205%20132%20C235%20112%20278%20106%20312%20114%20M165%20108%20C152%20142%20162%20178%20190%20204'%20fill='none'%20stroke='%23221019'%20stroke-width='5'%20stroke-linecap='round'/%3E%3Cg%20fill='%23ffc2d6'%3E%3Ccircle%20cx='240'%20cy='58'%20r='13'/%3E%3Ccircle%20cx='222'%20cy='50'%20r='9'/%3E%3Ccircle%20cx='312'%20cy='114'%20r='14'/%3E%3Ccircle%20cx='292'%20cy='104'%20r='9'/%3E%3Ccircle%20cx='190'%20cy='204'%20r='12'/%3E%3Ccircle%20cx='170'%20cy='190'%20r='8'/%3E%3Ccircle%20cx='130'%20cy='96'%20r='11'/%3E%3Ccircle%20cx='96'%20cy='78'%20r='9'/%3E%3Ccircle%20cx='260'%20cy='170'%20r='12'/%3E%3Ccircle%20cx='350'%20cy='238'%20r='13'/%3E%3C/g%3E%3Cg%20fill='%23ff8fb5'%3E%3Ccircle%20cx='246'%20cy='64'%20r='6'/%3E%3Ccircle%20cx='318'%20cy='120'%20r='6'/%3E%3Ccircle%20cx='196'%20cy='210'%20r='5'/%3E%3Ccircle%20cx='266'%20cy='176'%20r='6'/%3E%3Ccircle%20cx='356'%20cy='244'%20r='6'/%3E%3C/g%3E%3C/svg%3E") no-repeat;background-size:contain;opacity:.95}
+.fx-sakura .petals{position:absolute;inset:0;display:block}
+.fx-sakura .p{position:absolute;top:-6vh;left:var(--x);width:var(--z);height:calc(var(--z) * .75);border-radius:150% 0 150% 0;background:linear-gradient(135deg,#ffe0ea,#ff9fbe);opacity:var(--o);animation:petal var(--d) linear var(--w) infinite;will-change:transform}
+@keyframes petal{
+  0%{transform:translate3d(0,0,0) rotate(0)}
+  25%{transform:translate3d(var(--dx),28vh,0) rotate(120deg)}
+  50%{transform:translate3d(calc(var(--dx) * -.4),56vh,0) rotate(230deg)}
+  75%{transform:translate3d(var(--dx),84vh,0) rotate(330deg)}
+  100%{transform:translate3d(calc(var(--dx) * .3),114vh,0) rotate(420deg)}
+}
+
+/* ---------- Fireflies ---------- */
+.fx-fireflies{background:linear-gradient(180deg,#02070a 0%,#06160f 55%,#0d2a1b 100%)}
+.fx-fireflies .trees{position:absolute;inset:auto 0 0 0;height:42%;background:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20600%20200'%20preserveAspectRatio='none'%3E%3Cg%20fill='%23020a07'%3E%3Cpolygon%20points='-10,200%2030,40%2070,200'/%3E%3Cpolygon%20points='50,200%2095,90%20140,200'/%3E%3Cpolygon%20points='120,200%20170,20%20220,200'/%3E%3Cpolygon%20points='200,200%20245,100%20290,200'/%3E%3Cpolygon%20points='270,200%20325,50%20380,200'/%3E%3Cpolygon%20points='360,200%20400,110%20440,200'/%3E%3Cpolygon%20points='420,200%20475,30%20530,200'/%3E%3Cpolygon%20points='510,200%20555,95%20600,200'/%3E%3Crect%20x='0'%20y='185'%20width='600'%20height='15'/%3E%3C/g%3E%3C/svg%3E") repeat-x bottom left;background-size:auto 100%}
+.fx-fireflies .flies{position:absolute;inset:0;display:block}
+.fx-fireflies .fly{position:absolute;left:var(--x);top:var(--y);width:var(--z);height:var(--z);border-radius:50%;background:#efffa0;box-shadow:0 0 8px 3px rgba(214,255,110,.75),0 0 24px 9px rgba(190,255,90,.32);animation:flit var(--d) ease-in-out var(--w) infinite alternate,glow var(--g) ease-in-out var(--w) infinite alternate;will-change:transform,opacity}
+@keyframes flit{
+  0%{transform:translate(0,0)}
+  33%{transform:translate(var(--dx),var(--dy))}
+  66%{transform:translate(calc(var(--dx) * -.6),calc(var(--dy) * .4))}
+  100%{transform:translate(calc(var(--dx) * .5),calc(var(--dy) * -1))}
+}
+@keyframes glow{from{opacity:.12}to{opacity:1}}
+
+/* ---------- Lava lamp ---------- */
+.fx-lava{background:linear-gradient(180deg,#1a0620 0%,#3a0d3a 55%,#5a1330 100%)}
+.fx-lava .blobs{position:absolute;inset:0;display:block;filter:blur(22px)}
+.fx-lava .b{position:absolute;bottom:-28vmin;left:var(--x);width:var(--z);height:var(--z);border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--c1),var(--c2));opacity:.85;animation:lava var(--d) ease-in-out var(--w) infinite alternate;will-change:transform}
+@keyframes lava{
+  0%{transform:translate(0,0) scale(1,1)}
+  50%{transform:translate(var(--dx),-55vh) scale(1.18,.9)}
+  100%{transform:translate(calc(var(--dx) * -1),-112vh) scale(.9,1.15)}
+}
+
+/* ---------- Warp speed ---------- */
+.fx-warp{background:radial-gradient(circle at 50% 50%,#0b1030 0%,#03040c 55%,#000 100%)}
+.fx-warp .streaks{position:absolute;inset:0;display:block}
+.fx-warp .streaks i{position:absolute;left:50%;top:50%;width:90px;height:2px;border-radius:2px;background:linear-gradient(90deg,rgba(150,190,255,0),#fff);transform-origin:0 50%;opacity:0;animation:warp var(--d) cubic-bezier(.45,0,1,1) var(--w) infinite;will-change:transform,opacity}
+@keyframes warp{
+  0%{opacity:0;transform:rotate(var(--a)) translateX(3vmax) scaleX(.1)}
+  12%{opacity:var(--o)}
+  100%{opacity:0;transform:rotate(var(--a)) translateX(80vmax) scaleX(4)}
+}
+
+/* ---------- Matrix ---------- */
+.fx-matrix{background:#000504}
+.fx-matrix .col{position:absolute;top:0;left:var(--x);font:400 var(--fs)/1.2 ui-monospace,Menlo,Consolas,monospace;color:#2cff88;white-space:pre;text-align:center;opacity:var(--o);text-shadow:0 0 8px rgba(44,255,136,.7);transform:translateY(-100%);animation:matrix var(--d) linear var(--w) infinite;-webkit-mask-image:linear-gradient(transparent,#000 85%);mask-image:linear-gradient(transparent,#000 85%);will-change:transform}
+@keyframes matrix{from{transform:translateY(-100%)}to{transform:translateY(100vh)}}
+
+/* ---------- Sound waves ---------- */
+.fx-bars{background:linear-gradient(180deg,#0a0420 0%,#1a0838 58%,#2a0a4a 100%)}
+.fx-bars .glowline{position:absolute;inset:auto 0 14% 0;height:2px;background:linear-gradient(90deg,transparent,#ff4fd8,#7a5cff,#19e6ff,transparent);box-shadow:0 0 24px 6px rgba(122,92,255,.55)}
+.fx-bars .eq{position:absolute;inset:auto 3% 14% 3%;height:40%;opacity:.62;display:flex;align-items:flex-end;gap:.7%}
+.fx-bars .eq i{flex:1;height:100%;border-radius:6px 6px 2px 2px;background:linear-gradient(180deg,#ff4fd8,#7a5cff 55%,#19e6ff);box-shadow:0 0 16px rgba(255,79,216,.35);transform-origin:50% 100%;animation:eqbar var(--d) ease-in-out var(--w) infinite alternate;will-change:transform}
+.fx-bars .eq.mirror{inset:auto 3% auto 3%;top:86%;transform:scaleY(-1);opacity:.16;filter:blur(1.5px)}
+@keyframes eqbar{from{transform:scaleY(var(--lo))}to{transform:scaleY(var(--hi))}}

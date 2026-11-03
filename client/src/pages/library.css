@@ -1,0 +1,15 @@
+.rowcheck{width:18px;height:18px;accent-color:var(--accent);cursor:pointer;flex:none}
+.rowcheck:disabled{cursor:not-allowed;opacity:.35}
+.row.selected{background:var(--select-bg)}
+.selbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:0 0 12px;padding:10px 12px;background:var(--panel);border-radius:10px}
+.selbar .grow{flex:1}
+.selall{display:flex;gap:8px;align-items:center;cursor:pointer}
+button.danger{background:var(--danger-bg);color:#fff}
+button.danger:hover:not(:disabled){background:var(--danger-bg-hover)}
+.libmsg{color:var(--muted);margin:6px 0 12px}
+
+/* Search box with a clear (✕) button */
+.searchbox{position:relative;flex:1;display:flex}
+.searchbox input{width:100%;padding-right:36px}
+.searchbox .clear{position:absolute;right:5px;top:50%;transform:translateY(-50%);background:transparent;color:var(--muted);padding:2px 8px;font-size:15px}
+.searchbox .clear:hover:not(:disabled){background:var(--btn);color:var(--text)}

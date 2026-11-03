@@ -1,0 +1,9 @@
+.wf{margin-top:32px;padding-top:18px;border-top:1px solid var(--border)}
+.wf h2{margin:0 0 6px;font-size:18px}
+.wfrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 12px;border:1px solid var(--border);border-radius:10px;margin-top:8px;background:var(--card)}
+.wfrow .info{flex:1;min-width:200px}
+.wfrow .info b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.wfrow .info span{display:block;font-size:12px;color:var(--subtle);margin-top:2px}
+.wfrow .info .bad{color:var(--danger)}
+.fbanner{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:10px 14px;margin-bottom:14px;border-radius:10px;background:var(--panel);border:1px solid var(--border)}
+.fbanner span{flex:1;min-width:200px}
